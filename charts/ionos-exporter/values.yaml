@@ -31,6 +31,8 @@ ionos:
     enabled: false
   mariadb_v2:
     enabled: false
+  valkey_v2:
+    enabled: false
   k8s:
     enabled: false
     fetch_interval: 120

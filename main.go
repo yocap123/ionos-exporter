@@ -72,6 +72,13 @@ func main() {
 		go internal.MariaDBV2CollectResources(ionos_api_cycle)
 	}
 
+	if internal.Must(internal.GetBoolEnv("IONOS_EXPORTER_VALKEY_V2_ENABLED", false)) {
+		go internal.ValkeyV2CollectResources(ionos_api_cycle)
+	}
+
+	// TODO YOM: delete
+	go internal.ValkeyV2CollectResources(ionos_api_cycle)
+
 	internal.PrintDCResources(m)
 	internal.StartPrometheus(m)
 	http.Handle("/metrics", promhttp.Handler())
